@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.npz
+sweep1.json
+sweep2.json
+.claude/
