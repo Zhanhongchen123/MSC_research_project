@@ -24,7 +24,7 @@ from scipy.signal import periodogram
 ## 4. overall test: reject the white-noise H0 iff T_lambda > t_lambda, with the
 ##    critical value from the EXACT null distribution of his eq (4.1),
 ##       P_H0(T_lambda > t) = sum_{l=1}^{n} sum_{k=0}^{l-1} (-1)^{k+l+1}
-##             C(n,l) C(n-1,k) t^k (1 - lambda*l*g_F - t)_+^{n-k-1},
+##             C(n,l) C(l-1,k) C(n-1,k) t^k (1 - lambda*l*g_F - t)_+^{n-k-1},
 ##    the vacancy of n random arcs of length lambda*g_F on the unit circle
 ##    (Siegel 1978); computable for small n only, since the binomials overflow
 ##    for n beyond a few hundred, which is why Siegel tabulates n <= 50
@@ -69,7 +69,7 @@ def siegel_exact_tail(t, n, lam, gF):
             break
         cn_l = comb(n, l)
         for k in range(0, l):
-            total += ((-1) ** (k + l + 1)) * cn_l * comb(n - 1, k) \
+            total += ((-1) ** (k + l + 1)) * cn_l * comb(l - 1, k) * comb(n - 1, k) \
                      * (t ** k) * (base ** (n - k - 1))
     return float(total)
 
@@ -136,7 +136,7 @@ def siegel_detect_periods(t, delta=1.0, full_day=True, lam=0.6, alpha=0.01,
     ## Contributing frequencies: Y_j > lambda*g_F (Siegel's adaptive set)
     idx = np.where(Y > thr)[0]
     if min_cycles is not None:                      ## require enough cycles in the window
-        fmin = min_cycles / (n_time * delta)
+        fmin = min_cycles / n_time              ## fk is per sample; n_time*fk = cycles in window
         idx = idx[fk[idx] >= fmin]
 
     ## Merge adjacent contributing bins to their local maximum
