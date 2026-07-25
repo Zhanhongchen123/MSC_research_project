@@ -85,6 +85,7 @@ All test scripts accept --smoke for a fast check; the data files live in `Datase
 - Fig 4b/c (sweeps): python3 test_model.py --sweep1 / --sweep2 then --figs (--sweep1 / --sweep2 write sweep1.json / sweep2.json)
 - Fig 2 (density recovery): python3 make_fig_density.py
 - Table 4 (timing): python3 timing_table.py  (hardware-dependent; sampling loop only)
+- Misspecification checks (Sect. 3.1): python3 test_misspec.py a 0|1|2  /  b 0|1|2
 - Outlook row and figure: python3 test_outlook_ks.py
 - LANL edge 1 row and figure: python3 test_lanl_edge1_ks.py
 - LANL edge 2 row and figure: python3 test_lanl_edge2_ks.py  (staged: --stage=ku|base|full|fin, --fig; the ku/base/full stages build e2_cache.npz, after which --stage=fin --fig runs in seconds)
