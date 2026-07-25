@@ -4,7 +4,7 @@
 ##   exp a: one-clock truth  -> detection, R_mode, AUC baseline vs extended
 ##   exp b: harmonic pair 15/20 s (4:3) -> detection-level collapse behaviour
 ## Bench settings mirror test_model.run_cell exactly (AUC-table convention).
-import sys, json, numpy as np
+import sys, json, os, numpy as np
 from simulating_data import simulate_3clock
 from siegel_periods import siegel_detect_periods
 from mcmc_improve import gibbs_rj_variable
@@ -42,5 +42,7 @@ else:
            "fundamentals": [round(p, 4) for p in sieg["fundamentals"]],
            "top_peaks": [[round(p["period"], 4), round(p["Y"]/sieg["threshold"], 1)]
                          for p in sieg["peaks"][:4]]}
-json.dump(res, open(f"/home/claude/work/misspec/{exp}{sd}.json", "w"))
+outdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "misspec_out")
+os.makedirs(outdir, exist_ok=True)
+json.dump(res, open(os.path.join(outdir, f"{exp}{sd}.json"), "w"))
 print(res)

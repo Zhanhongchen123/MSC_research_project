@@ -4,3 +4,4 @@ __pycache__/
 sweep1.json
 sweep2.json
 .claude/
+misspec_out/
