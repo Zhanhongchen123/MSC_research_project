@@ -1,0 +1,10 @@
+family	all cached edges >Comp186884 (topology-defined)
+realfam_edge0	Comp057572>Comp186884	N=16982	span=2.602d
+realfam_edge1	Comp110495>Comp186884	N=16908	span=2.555d
+realfam_edge2	Comp124040>Comp186884	N=17087	span=2.602d
+realfam_edge3	Comp267560>Comp186884	N=22262	span=2.486d
+realfam_edge4	Comp393078>Comp186884	N=21450	span=2.602d
+realfam_edge5	Comp419410>Comp186884	N=35487	span=2.599d
+realfam_edge6	Comp712661>Comp186884	N=16124	span=2.365d
+realfam_edge7	Comp816882>Comp186884	N=24456	span=2.602d
+realfam_edge8	Comp938626>Comp186884	N=17934	span=2.602d
